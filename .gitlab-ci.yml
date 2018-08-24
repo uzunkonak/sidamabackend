@@ -1,0 +1,17 @@
+image: docker.siemens.com/mindsphere-mainline/hub/dind-aws-java-terraform:1.9
+
+stages:
+  - build
+  - publish
+
+build:
+  stage: build
+  script:
+  - sh gradlew build
+
+publish:
+  stage: publish
+  only:
+  - master
+  script:
+  - sh gradlew publish
